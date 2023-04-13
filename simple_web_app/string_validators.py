@@ -65,7 +65,7 @@ class EspecialCharacterValidator(Validator):
 
 class ForbiddenEspecialCharacterValidator(Validator):
     def __init__(self):
-        self.especial_set = set(['/', '^', '~'])
+        self.especial_set = set(["/", "^", "~"])
 
     def validate(self, content):
         content_set = set(content)
