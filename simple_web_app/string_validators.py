@@ -63,6 +63,17 @@ class EspecialCharacterValidator(Validator):
             raise EspecialCharacterException(detail=msg)
 
 
+class ForbiddenEspecialCharacterValidator(Validator):
+    def __init__(self):
+        self.especial_set = set(['/', '^', '~'])
+
+    def validate(self, content):
+        content_set = set(content)
+        if content_set.intersection(self.especial_set):
+            msg = "Passwords can not have '/', '^', '~'"
+            raise EspecialCharacterException(detail=msg)
+
+
 class UpperCaseValidator(Validator):
     def __init__(self):
         self.upper_case_set = set(ascii_uppercase)
